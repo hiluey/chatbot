@@ -1,0 +1,47 @@
+# Ambiente virtual
+venv/
+.env
+.env.*
+
+# Arquivos Python compilados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+
+# Arquivos de configuração de IDEs
+.vscode/
+.idea/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+
+# Testes
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Pipenv
+Pipfile.lock
+
+# mypy
+.mypy_cache/
+
+# pyinstaller
+dist/
+build/
+*.spec
+
+# Outros arquivos sensíveis ou desnecessários
+*.db
+*.sqlite3
