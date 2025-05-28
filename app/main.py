@@ -7,6 +7,8 @@ from fastapi.security import OAuth2PasswordRequestForm
 from typing import List
 from app.database import Base
 from fastapi import APIRouter
+from app.chatbot import delete_old_chats
+
 
 Base.metadata.create_all(bind=engine)
 
@@ -64,11 +66,8 @@ def ask_question(
     db.commit()
     db.refresh(new_chat)
 
-    all_chats = db.query(Chat).filter(Chat.user_id == user.id).order_by(Chat.timestamp.desc()).all()
-    if len(all_chats) > 5:
-        for c in all_chats[5:]:
-            db.delete(c)
-        db.commit()
+    delete_old_chats(user.id, db)
+
 
     return new_chat
 app.include_router(router_v1)
